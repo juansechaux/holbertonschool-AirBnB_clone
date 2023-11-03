@@ -9,15 +9,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, arg):
         """Quit command to exit the program\n"""
-        print("exit")
+        print("Exit")
         return True
 
     def do_EOF(self, arg):
         """Exit the Program"""
-        print("exit")
+        print("Exit")
         return True
 
-    def empyline(self):
+    def emptyline(self):
         """an empty line + ENTER shouldn’t execute anything"""
         pass
 
