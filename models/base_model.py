@@ -4,17 +4,17 @@ from datetime import datetime
 import models
 '''This is the module for BaseModel Class'''
 
-print('Cuarto paso initialization')
+
 class BaseModel:
     def __init__(self, *args, **kwargs):
-        if len(kwargs) > 0:
+        if kwargs != {}:
             for key, value in kwargs.items():
-                if key == "id":
-                    self.id = value
-                elif key == "created_at":
-                    self.created_at = value
-                elif key == "updated_at":
-                    self.updated_at = value
+                if key == "created_at" or key == "updated_at":
+                    val = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, val)
+                    continue
+                if key != "__class__":
+                    setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -33,8 +33,15 @@ class BaseModel:
         return f"[{class_name}] ({self.id}) {self.__dict__}"
 
     def to_dict(self):
-        new_dict = self.__dict__
-        new_dict["created_at"] = self.created_at.isoformat()
-        new_dict["updated_at"] = self.updated_at.isoformat()
-        new_dict["__class__"] = self.__class__.__name__
-        return new_dict
+    
+        new = dict(self.__dict__)
+        new["__class__"] = type(self).__name__
+        new["created_at"] = new["created_at"].isoformat()
+        new["updated_at"] = new["updated_at"].isoformat()
+        
+        return new
+        #new_dict = self.__dict__
+        #new_dict["created_at"] =  self.created_at.isoformat()
+        #new_dict["updated_at"] = self.updated_at.isoformat()
+        #new_dict["__class__"] = self.__class__.__name__
+        #return new_dict
