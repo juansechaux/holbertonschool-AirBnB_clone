@@ -30,7 +30,5 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
                 for key, value in data.items():
-                    class_name, obj_id = key.split('.')
-                    #cls = eval(class_name)
                     obj = BaseModel(**value)
                     FileStorage.__objects[key] = obj
