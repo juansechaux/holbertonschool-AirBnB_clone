@@ -2,6 +2,8 @@
 '''This is the module for BaseModel Class'''
 import json
 import os
+from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -30,5 +32,11 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
                 for key, value in data.items():
-                    obj = BaseModel(**value)
-                    FileStorage.__objects[key] = obj
+                    list_obj_id = key.split(".")
+                    obj_type = list_obj_id[0]
+                    if obj_type == "User":
+                        obj = User(**value)
+                        FileStorage.__objects[key] = obj
+                    elif obj_type == "BaseModel":
+                        obj = BaseModel(**value)
+                        FileStorage.__objects[key] = obj
