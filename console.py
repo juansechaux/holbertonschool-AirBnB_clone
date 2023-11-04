@@ -5,6 +5,7 @@ import json
 from models import storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -18,7 +19,10 @@ class HBNBCommand(cmd.Cmd):
             if arg not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
             else:
-                arg = BaseModel()
+                if arg == "BaseModel":
+                    arg = BaseModel()
+                elif arg == "User":
+                    arg = User()
                 arg.save()
                 print(arg.id)
         else:
