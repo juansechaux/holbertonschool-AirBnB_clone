@@ -4,7 +4,11 @@ import json
 import os
 from models.base_model import BaseModel
 from models.user import User
-
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class FileStorage:
     '''class FileStorage'''
@@ -33,10 +37,26 @@ class FileStorage:
                 data = json.load(file)
                 for key, value in data.items():
                     list_obj_id = key.split(".")
-                    obj_type = list_obj_id[0]
-                    if obj_type == "User":
+                    obj_type = eval(list_obj_id[0])()
+                    FileStorage.__objects[key] = obj_type
+                    '''if obj_type == "User":
                         obj = User(**value)
                         FileStorage.__objects[key] = obj
                     elif obj_type == "BaseModel":
                         obj = BaseModel(**value)
                         FileStorage.__objects[key] = obj
+                    elif obj_type == "State":
+                        obj = State(**value)
+                        FileStorage.__objects[key] = obj
+                    elif obj_type == "City":
+                        obj = City(**value)
+                        FileStorage.__objects[key] = obj
+                    elif obj_type == "Amenity":
+                        obj = Amenity(**value)
+                        FileStorage.__objects[key] = obj
+                    elif obj_type == "Place":
+                        obj = Place(**value)
+                        FileStorage.__objects[key] = obj
+                    elif obj_type == "Review":
+                        obj = Review(**value)
+                        FileStorage.__objects[key] = obj'''
