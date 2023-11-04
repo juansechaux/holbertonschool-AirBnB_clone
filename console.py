@@ -30,6 +30,7 @@ class HBNBCommand(cmd.Cmd):
                 elif arg == "User":
                     arg = User()'''
                 print(class_type.id)
+                storage.save()
         else:
             print("** class name missing **")
 
