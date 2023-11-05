@@ -10,6 +10,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     '''class FileStorage'''
 
@@ -25,7 +26,8 @@ class FileStorage:
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)."""
-        serialized_objects = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
+        serialized_objects = {key: obj.to_dict() for key,
+                              obj in FileStorage.__objects.items()}
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
             json.dump(serialized_objects, file, default=str)
 
@@ -39,24 +41,3 @@ class FileStorage:
                     list_obj_id = key.split(".")
                     obj_type = eval(list_obj_id[0])(**value)
                     FileStorage.__objects[key] = obj_type
-                    '''if obj_type == "User":
-                        obj = User(**value)
-                        FileStorage.__objects[key] = obj
-                    elif obj_type == "BaseModel":
-                        obj = BaseModel(**value)
-                        FileStorage.__objects[key] = obj
-                    elif obj_type == "State":
-                        obj = State(**value)
-                        FileStorage.__objects[key] = obj
-                    elif obj_type == "City":
-                        obj = City(**value)
-                        FileStorage.__objects[key] = obj
-                    elif obj_type == "Amenity":
-                        obj = Amenity(**value)
-                        FileStorage.__objects[key] = obj
-                    elif obj_type == "Place":
-                        obj = Place(**value)
-                        FileStorage.__objects[key] = obj
-                    elif obj_type == "Review":
-                        obj = Review(**value)
-                        FileStorage.__objects[key] = obj'''
