@@ -33,10 +33,8 @@ class BaseModel:
         return f"[{class_name}] ({self.id}) {self.__dict__}"
 
     def to_dict(self):
-    
         new = dict(self.__dict__)
         new["__class__"] = type(self).__name__
         new["created_at"] = new["created_at"].isoformat()
         new["updated_at"] = new["updated_at"].isoformat()
-        
         return new

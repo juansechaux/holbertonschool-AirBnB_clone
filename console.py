@@ -17,7 +17,8 @@ class HBNBCommand(cmd.Cmd):
     '''class HBNB that emule a CMD'''
     prompt = "(hbnb) "
 
-    class_list = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+    class_list = ["BaseModel", "User", "State", "City\
+", "Amenity", "Place", "Review"]
 
     def do_create(self, arg):
         if arg != "":
@@ -68,7 +69,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation of
+        all instances based or not on the class name"""
         args = line.split()
         if len(args) == 1:
             if args[0] not in HBNBCommand.class_list:
