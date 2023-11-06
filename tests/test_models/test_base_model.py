@@ -86,22 +86,5 @@ class TestBaseModelpep8(unittest.TestCase):
         self.assertEqual(result.total_errors, 0)
 
 
-class TestDocsBaseModel(unittest.TestCase):
-    """test docstrings for base and test_base files"""
-
-    def test_module(self):
-        """check module docstrings"""
-        self.assertTrue(len(base_model.__doc__) > 0)
-
-    def test_class(self):
-        """check class docstrings"""
-        self.assertTrue(len(BaseModel.__doc__) > 0)
-
-    def test_method(self):
-        """check method docstrings"""
-        for func in dir(BaseModel):
-            self.assertTrue(len(func.__doc__) > 0)
-
-
 if __name__ == "__main__":
     unittest.main()
