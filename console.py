@@ -17,15 +17,15 @@ class HBNBCommand(cmd.Cmd):
     '''class HBNB that emule a CMD'''
     prompt = "(hbnb) "
 
-    class_list = ["BaseModel", "User", "State", "City\
-", "Amenity", "Place", "Review"]
+    class_list = {"BaseModel": BaseModel, "User": User, "State": State, "City\
+": City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
     def do_create(self, arg):
         if arg != "":
             if arg not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
             else:
-                class_type = eval(arg)()
+                class_type = self.class_list[arg]()
                 '''if arg == "BaseModel":
                     arg = BaseModel()
                 elif arg == "User":
