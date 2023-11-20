@@ -60,10 +60,12 @@ button:hover {
     margin-top: 7.6%;
     list-style-type: none;
     text-align: left;
+    position: relative;
 }
 
 .filters .locations:hover .popover {
     display: block;
+
 }
 
 .filters .amenities:hover .popover {

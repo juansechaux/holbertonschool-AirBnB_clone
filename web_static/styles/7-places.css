@@ -1,0 +1,25 @@
+.container .places_list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.container .places h1{
+    font-size: 30px;
+    align-self: flex-start;
+}
+
+.container .places article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .places article h2 {
+    font-size: 30px;
+    text-align: center;
+}
