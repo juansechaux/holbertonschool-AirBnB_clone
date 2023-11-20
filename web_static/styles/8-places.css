@@ -38,7 +38,6 @@
     float: right;
     position: relative;
     top: -80px;
-
 }
 
 .container .places .places_list .information {
@@ -48,8 +47,15 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    /* margin-left: 50px; */
+    width: 400px;
+    position: relative;
+    top: -70px;
 }
 
+.container .places .places_list .information p {
+    margin-top: 0%;
+}
 .max_guest {
     text-align: center;
     width: 100px;
@@ -63,4 +69,8 @@
 .number_bathrooms {
     text-align: center;
     width: 100px;
+}
+
+.container .places .places_list .user {
+    margin-top: -60px;
 }
